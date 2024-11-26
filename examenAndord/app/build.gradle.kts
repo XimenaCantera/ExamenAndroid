@@ -64,14 +64,14 @@ dependencies {
     implementation("jp.wasabeef:glide-transformations:4.3.0")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3") // Última versión estable de coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     // Dependencias adicionales
-    implementation("androidx.fragment:fragment-ktx:1.6.1") // Última versión estable
-    implementation("androidx.activity:activity-ktx:1.8.0") // Última versión estable para activity-ktx
-    implementation("androidx.databinding:databinding-runtime:8.1.0") // Última versión para data binding runtime
-
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")  // o la versión más reciente
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")  // o la versión más reciente
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
+    implementation("androidx.activity:activity-ktx:1.8.0")
+    implementation("androidx.databinding:databinding-runtime:8.1.0")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
+    implementation ("com.google.code.gson:gson:2.8.8")  // Leer Json
 
 }

@@ -1,0 +1,17 @@
+[
+  {
+    "country": "USA",
+    "activeCases": 200000,
+    "totalDeaths": 50000
+  },
+  {
+    "country": "India",
+    "activeCases": 100000,
+    "totalDeaths": 45000
+  },
+  {
+    "country": "Brazil",
+    "activeCases": 200000,
+    "totalDeaths": 40000
+  }
+]
