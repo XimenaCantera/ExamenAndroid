@@ -8,11 +8,11 @@ import com.google.gson.reflect.TypeToken
 import java.io.InputStreamReader
 
 fun loadCovidData(context: Context): List<CovidInfo> {
-    // Abrimos el archivo JSON de la carpeta `res/raw`
+    // Open JSON
     val inputStream = context.resources.openRawResource(R.raw.covid_data)
     val reader = InputStreamReader(inputStream)
     val type = object : TypeToken<List<CovidInfo>>() {}.type
 
-    // Parseamos el JSON a una lista de objetos `CovidInfo`
+    // JSON as a objet list `CovidInfo`
     return Gson().fromJson(reader, type)
 }

@@ -6,15 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin.ninjaapp.R
+import com.example.kotlin.ninjaapp.domain.model.CaseData
 import com.example.kotlin.ninjaapp.domain.model.CovidInfo
 
-class CovidAdapter(private val covidList: List<CovidInfo>) : RecyclerView.Adapter<CovidAdapter.CovidViewHolder>() {
 
-    class CovidViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val country: TextView = view.findViewById(R.id.tvCountry)
-        val activeCases: TextView = view.findViewById(R.id.tvActiveCases)
-        val totalDeaths: TextView = view.findViewById(R.id.tvTotalDeaths)
-    }
+class CovidAdapter(private val covidInfo: CovidInfo) : RecyclerView.Adapter<CovidAdapter.CovidViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CovidViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_covid_info, parent, false)
@@ -22,11 +18,19 @@ class CovidAdapter(private val covidList: List<CovidInfo>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: CovidViewHolder, position: Int) {
-        val covidInfo = covidList[position]
-        holder.country.text = covidInfo.country
-        holder.activeCases.text = "Casos activos: ${covidInfo.activeCases}"
-        holder.totalDeaths.text = "Muertes: ${covidInfo.totalDeaths}"
+        val date = covidInfo.cases.entries.toList()[position]
+        holder.bind(date.key, date.value)
     }
 
-    override fun getItemCount(): Int = covidList.size
+    // A card for a one date
+    override fun getItemCount(): Int {
+        return covidInfo.cases.size
+    }
+
+    inner class CovidViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(date: String, caseData: CaseData) {
+            itemView.findViewById<TextView>(R.id.dateTextView).text = "Fecha: $date"
+            itemView.findViewById<TextView>(R.id.casesTextView).text = "Casos Totales: ${caseData.total}\nCasos Nuevos: ${caseData.new}"
+        }
+    }
 }

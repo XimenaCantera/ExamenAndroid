@@ -1,4 +1,4 @@
-package com.example.kotlin.ninjaapp.data
+package com.example.kotlin.ninjaapp.data.repository
 
 import android.content.Context
 import com.example.kotlin.ninjaapp.domain.model.CovidInfo
