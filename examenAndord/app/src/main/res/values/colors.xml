@@ -1,11 +1,11 @@
 <resources>
-    <color name="purple_200">#CE93D8</color> <!-- Define el color morado 200 -->
-    <color name="purple_500">#9C27B0</color> <!-- Define el color morado 500 -->
-    <color name="purple_700">#7B1FA2</color> <!-- Define el color morado 700 -->
-    <color name="white">#FFFFFF</color> <!-- Define el color blanco -->
-    <color name="teal_200">#80CBC4</color> <!-- Define el color teal 200 -->
-    <color name="teal_700">#00796B</color> <!-- Define el color teal 700 -->
-    <color name="black">#000000</color> <!-- Define el color negro -->
+    <color name="purple_200">#CE93D8</color>
+    <color name="purple_500">#9C27B0</color>
+    <color name="purple_700">#7B1FA2</color>
+    <color name="white">#FFFFFF</color>
+    <color name="teal_200">#80CBC4</color>
+    <color name="teal_700">#00796B</color>
+    <color name="black">#000000</color>
 
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryVariant">#3700B3</color>

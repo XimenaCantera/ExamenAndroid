@@ -43,6 +43,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0") // Versión más estable actual
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
+    implementation(libs.play.services.basement)
 
     // JUnit para pruebas unitarias
     testImplementation("junit:junit:4.13.2")
@@ -72,6 +73,7 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.8.0")
     implementation("androidx.databinding:databinding-runtime:8.1.0")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
-    implementation ("com.google.code.gson:gson:2.8.8")  // Leer Json
+    implementation ("com.google.code.gson:gson:2.8.8")
+    implementation("androidx.recyclerview:recyclerview:1.2.0")
 
 }

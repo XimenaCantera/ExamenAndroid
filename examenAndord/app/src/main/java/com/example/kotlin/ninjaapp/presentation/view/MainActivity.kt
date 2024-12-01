@@ -1,34 +1,38 @@
 package com.example.kotlin.ninjaapp.presentation.view
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin.ninjaapp.R
-import com.example.kotlin.ninjaapp.utils.loadCovidData
-import com.example.kotlin.ninjaapp.domain.model.CovidInfo
+import com.example.kotlin.ninjaapp.data.CovidRepository
+import com.example.kotlin.ninjaapp.presentation.adapter.CovidAdapter
+import com.example.kotlin.ninjaapp.presentation.viewModel.CovidViewModel
+import com.example.kotlin.ninjaapp.domain.usecase.GetCovidDataUseCase
+import com.example.kotlin.ninjaapp.presentation.viewModel.CovidViewModelFactory
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var covidViewModel: CovidViewModel
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Carga los datos de COVID desde el archivo JSON local
-        val covidData: List<CovidInfo> = loadCovidData(this)
+        recyclerView = findViewById(R.id.recyclerViewCovid)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
 
-        // Verifica que los datos estén siendo recibidos correctamente
-        Log.d("CovidData", "Datos recibidos: $covidData")
+        val repository = CovidRepository(this)
+        val useCase = GetCovidDataUseCase(repository)
+        val factory = CovidViewModelFactory(useCase)
+        covidViewModel = ViewModelProvider(this, factory).get(CovidViewModel::class.java)
 
-        // Encuentra el TextView donde quieres mostrar los datos
-        val textView: TextView = findViewById(R.id.textViewCovidData)
-
-        // Convierte la lista de datos a un formato legible y actualiza el TextView
-        val data = covidData.joinToString("\n") {
-            "País: ${it.country}, Casos activos: ${it.activeCases}, Muertes: ${it.totalDeaths}"
+        covidViewModel.covidData.observe(this) { covidData ->
+            recyclerView.adapter = CovidAdapter(covidData)
         }
 
-        // Actualiza el contenido del TextView
-        textView.text = data
+        covidViewModel.loadCovidData()
     }
 }
